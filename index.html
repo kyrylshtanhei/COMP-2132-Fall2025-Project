@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hangman Game - Kyryl Shtanhei</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="scripts/hangman.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap head">
+            <div class="brand">
+                <div class="logo" aria-hidden="true">HM</div>
+                <div>
+                    <h1 class="title">Hangman Game</h1>
+                    <p class="tagline">Guess the word before it's too late!</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="wrap">
+        <div class="game-container">
+            <!-- Left side: Hangman illustration -->
+            <div class="hangman-display">
+                <div class="hangman-stage">
+                    <img id="hangman0" class="hangman-part" src="images/hangman-0.jpg" alt="Gallows">
+                    <img id="hangman1" class="hangman-part hidden" src="images/hangman-1.jpg" alt="Head">
+                    <img id="hangman2" class="hangman-part hidden" src="images/hangman-2.jpg" alt="Body">
+                    <img id="hangman3" class="hangman-part hidden" src="images/hangman-3.jpg" alt="Left arm">
+                    <img id="hangman4" class="hangman-part hidden" src="images/hangman-4.jpg" alt="Right arm">
+                    <img id="hangman5" class="hangman-part hidden" src="images/hangman-5.jpg" alt="Left leg">
+                    <img id="hangman6" class="hangman-part hidden" src="images/hangman-6.jpg" alt="Right leg">
+                </div>
+                
+                <div class="guess-counter">
+                    <span>Wrong guesses: <strong id="wrongCount">0</strong> / 6</span>
+                </div>
+            </div>
+
+            <!-- Right side: Game play area -->
+            <div class="game-play">
+                <div class="hint-box">
+                    <h2>Hint:</h2>
+                    <p id="hintText">Loading...</p>
+                </div>
+
+                <div class="word-display" id="wordDisplay">
+                    <!-- Letter boxes will be generated here -->
+                </div>
+
+                <div class="alphabet-grid" id="alphabetGrid">
+                    <!-- Letter buttons will be generated here -->
+                </div>
+
+                <div class="game-controls">
+                    <button id="playAgainBtn" class="btn-primary hidden">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game over modal -->
+        <div id="gameOverModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-icon" id="modalIcon">🎉</div>
+                <h2 id="modalTitle">You Win!</h2>
+                <p id="modalMessage">Congratulations! You guessed the word.</p>
+                <p class="reveal-word">The word was: <strong id="revealWord"></strong></p>
+                <button id="modalPlayAgain" class="btn-primary">Play Again</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap foot">
+            <p>&copy; <span id="year"></span> Kyryl Shtanhei</p>
+            <p class="small">Final Project - Hangman Game</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+  "words": [
+    {
+      "word": "JAVASCRIPT",
+      "hint": "A popular programming language for web development"
+    },
+    {
+      "word": "ALGORITHM",
+      "hint": "A step-by-step procedure for solving a problem"
+    },
+    {
+      "word": "DATABASE",
+      "hint": "Organized collection of structured information"
+    },
+    {
+      "word": "FUNCTION",
+      "hint": "A reusable block of code that performs a specific task"
+    },
+    {
+      "word": "VARIABLE",
+      "hint": "A container for storing data values in programming"
+    },
+    {
+      "word": "DEBUGGING",
+      "hint": "The process of finding and fixing errors in code"
+    },
+    {
+      "word": "FRAMEWORK",
+      "hint": "A platform for developing software applications"
+    },
+    {
+      "word": "INTERFACE",
+      "hint": "A point where two systems meet and interact"
+    },
+    {
+      "word": "ENCRYPTION",
+      "hint": "The process of converting data into a coded format"
+    },
+    {
+      "word": "RESPONSIVE",
+      "hint": "Design that adapts to different screen sizes"
+    },
+    {
+      "word": "COMPILER",
+      "hint": "A program that translates code into machine language"
+    },
+    {
+      "word": "BROWSER",
+      "hint": "Software used to access the internet"
+    },
+    {
+      "word": "REPOSITORY",
+      "hint": "A storage location for software packages"
+    },
+    {
+      "word": "FRONTEND",
+      "hint": "The part of a website users interact with directly"
+    },
+    {
+      "word": "BACKEND",
+      "hint": "Server-side of a web application"
+    },
+    {
+      "word": "KEYBOARD",
+      "hint": "Input device with letters and numbers"
+    },
+    {
+      "word": "COMPUTER",
+      "hint": "Electronic device for processing data"
+    },
+    {
+      "word": "INTERNET",
+      "hint": "Global network connecting millions of computers"
+    },
+    {
+      "word": "PASSWORD",
+      "hint": "Secret word or phrase used for authentication"
+    },
+    {
+      "word": "DOWNLOAD",
+      "hint": "Transferring data from the internet to your device"
+    },
+    {
+      "word": "UPLOAD",
+      "hint": "Sending data from your device to the internet"
+    },
+    {
+      "word": "WEBSITE",
+      "hint": "Collection of web pages under a single domain"
+    },
+    {
+      "word": "GITHUB",
+      "hint": "Popular platform for hosting and sharing code"
+    },
+    {
+      "word": "PYTHON",
+      "hint": "High-level programming language known for simplicity"
+    },
+    {
+      "word": "TERMINAL",
+      "hint": "Command-line interface for operating systems"
+    },
+    {
+      "word": "DEVELOPER",
+      "hint": "A person who writes and maintains software"
+    },
+    {
+      "word": "SYNTAX",
+      "hint": "The rules that define the structure of code"
+    },
+    {
+      "word": "BOOLEAN",
+      "hint": "Data type with only two values: true or false"
+    },
+    {
+      "word": "ARRAY",
+      "hint": "Data structure that stores multiple values"
+    },
+    {
+      "word": "OBJECT",
+      "hint": "A collection of properties and methods"
+    }
+  ]
+}

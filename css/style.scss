@@ -1,0 +1,383 @@
+// Variables
+$bg: #0f1222;
+$card: #171a2e;
+$text: #e8ecfb;
+$muted: #b5bdd9;
+$accent: #7aa2ff;
+$accent-dark: #5a82df;
+$success: #4ade80;
+$danger: #ef4444;
+$warning: #fbbf24;
+$radius: 14px;
+$border: #ffffff1a;
+
+// Mixins
+@mixin fade-in($duration: 0.3s) {
+  animation: fadeIn $duration ease-in;
+}
+
+@mixin card-style {
+  background: $card;
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 2rem;
+}
+
+@mixin button-base {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@mixin gradient-button($color1, $color2) {
+  @include button-base;
+  color: white;
+  background: linear-gradient(135deg, $color1, $color2);
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($color1, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Base styles
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $bg;
+  color: $text;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  width: min(1200px, 92%);
+  margin-inline: auto;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0.5rem 0 1rem;
+}
+
+// Header
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba($bg, 0.8);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid $border;
+  z-index: 100;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.8rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #0b0e1a;
+  background: linear-gradient(135deg, $accent, #8ef0d0);
+}
+
+.title {
+  font-size: 1.15rem;
+}
+
+.tagline {
+  margin: 0;
+  color: $muted;
+  font-size: 0.9rem;
+}
+
+// Game Container
+.game-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+  
+  @media (min-width: 968px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Hangman Display
+.hangman-display {
+  @include card-style;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hangman-stage {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hangman-part {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  
+  &.hidden {
+    opacity: 0;
+  }
+  
+  &:not(.hidden) {
+    @include fade-in(0.5s);
+  }
+}
+
+.guess-counter {
+  font-size: 1.2rem;
+  color: $muted;
+  
+  strong {
+    color: $accent;
+    font-size: 1.4rem;
+  }
+}
+
+// Game Play Area
+.game-play {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hint-box {
+  @include card-style;
+  background: rgba($accent, 0.1);
+  border-color: $accent;
+  
+  h2 {
+    color: $accent;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+.word-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 2rem 0;
+  min-height: 100px;
+}
+
+.letter-box {
+  width: 50px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid $border;
+  border-radius: 8px;
+  
+  &.revealed {
+    @include fade-in(0.3s);
+    color: $success;
+    border-color: $success;
+    background: rgba($success, 0.1);
+  }
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: $radius;
+}
+
+.letter-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid $border;
+  border-radius: 8px;
+  color: $text;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: $accent;
+    transform: translateY(-2px);
+  }
+  
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    
+    &.correct {
+      border-color: $success;
+      background: rgba($success, 0.2);
+    }
+    
+    &.incorrect {
+      border-color: $danger;
+      background: rgba($danger, 0.2);
+    }
+  }
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.btn-primary {
+  @include gradient-button($accent, $accent-dark);
+}
+
+// Modal
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  
+  &.hidden {
+    display: none;
+  }
+  
+  &:not(.hidden) {
+    @include fade-in(0.3s);
+  }
+}
+
+.modal-content {
+  @include card-style;
+  max-width: 500px;
+  text-align: center;
+  @include fade-in(0.5s);
+}
+
+.modal-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+#modalTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#modalMessage {
+  font-size: 1.2rem;
+  color: $muted;
+  margin-bottom: 1.5rem;
+}
+
+.reveal-word {
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+  
+  strong {
+    color: $accent;
+    font-size: 1.5rem;
+  }
+}
+
+// Footer
+.site-footer {
+  margin: 1.5rem 0 0;
+  border-top: 1px solid $border;
+  background: rgba($bg, 0.7);
+}
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.9rem 0;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.small {
+  color: $muted;
+  font-size: 0.9rem;
+}
+
+// Utility classes
+.hidden {
+  display: none !important;
+}
+
+// Keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
